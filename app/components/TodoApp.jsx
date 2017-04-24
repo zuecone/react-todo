@@ -31,7 +31,9 @@ var TodoApp = React.createClass({
     };
   },
   handleToggle: function(id){
+    //console.log('in the handleToggle function');
     var updatedTodos = this.state.todos.map((todo) => {
+      //console.log(todo.text + 'inside the map');
       if(todo.id === id){
         todo.completed = !todo.completed;
       }
@@ -42,6 +44,7 @@ var TodoApp = React.createClass({
     //console.log(this.state.todos);
   },
   handleAddTodo: function(TodoValue){
+
    this.setState({
      todos:[
        ...this.state.todos,
