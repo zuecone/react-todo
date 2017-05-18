@@ -1,5 +1,6 @@
 var React = require('react');
 var UUID = require('node-uuid');
+var moment = require('moment');
 
 var TodoList = require('TodoList');
 var TodoAdd = require('TodoAdd');
@@ -43,6 +44,8 @@ var TodoApp = React.createClass({
       //console.log(todo.text + 'inside the map');
       if(todo.id === id){
         todo.completed = !todo.completed;
+        //console.log('currently looking at the unix time', moment().unix());
+        todo.completedAt = todo.completed ? moment().unix() : undefined;
       }
 
       return todo;
@@ -58,7 +61,9 @@ var TodoApp = React.createClass({
        {
          id: UUID(),
          text: TodoValue,
-         completed: false
+         completed: false,
+         createdAt: moment().unix(),
+         completedAt: undefined
        }
      ]
    });
